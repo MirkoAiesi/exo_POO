@@ -1,14 +1,11 @@
 ﻿using ConsoleApp1.Models;
 
-Console.WriteLine("Hello, World!");
- 
-Courant c = new Courant();
-User personne = new User();
+Compte compte = new Courant();
+compte.Numero="BE69 1430 8207 1274";
+compte.Depot(38);
+Banque banque = new Banque();
 
-c.Numero = "10.0";
-personne.Name= "Aiesi";
-personne.Prenom = "Mirko";
-
-c.Titulaire = personne ;
-
-Console.WriteLine(c.Titulaire.Name);
+banque.AddAccount(compte);
+banque.ShowAccount();
+banque.DeleteAccount(compte);
+banque.ShowAccount();

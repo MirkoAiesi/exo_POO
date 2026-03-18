@@ -14,4 +14,12 @@ public class Banque
     {
         account.Remove(supprimerCompte.Numero);
     }
+
+    public void ShowAccount()
+    {
+        foreach (KeyValuePair<string, Compte> n in account)
+        {
+            Console.WriteLine($"le compte au numéro {n.Key} à comme solde {n.Value.Solde}");
+        }
+    }
 }
