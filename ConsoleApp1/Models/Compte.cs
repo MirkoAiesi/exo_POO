@@ -42,5 +42,8 @@ public abstract class Compte //abstract ne peut pas etre instancié, on ne peut 
 
     protected abstract double CalculInteret();
 
-    
+    public void AppliquerInteret()
+    {
+        Solde = Solde + CalculInteret();
+    }
 }
