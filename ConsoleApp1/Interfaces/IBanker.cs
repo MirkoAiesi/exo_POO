@@ -1,6 +1,10 @@
-﻿namespace ConsoleApp1.Interfaces;
+﻿using ConsoleApp1.Models;
 
-public class IBanker
+namespace ConsoleApp1.Interfaces;
+
+public interface IBanker : ICustomer
 {
-    
+    void AppliquerInteret();
+    User Titulaire { get; }
+    string Numero { get; }
 }

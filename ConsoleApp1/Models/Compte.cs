@@ -2,7 +2,7 @@
 
 namespace ConsoleApp1.Models;
 
-public abstract class Compte //abstract ne peut pas etre instancié, on ne peut pas créer d'objet compte utiliser a des fin d'héritage
+public abstract class Compte : IBanker //abstract ne peut pas etre instancié, on ne peut pas créer d'objet compte utiliser a des fin d'héritage
 {
     public string? Numero { get; set; }
     public double Solde { get; protected set; }
