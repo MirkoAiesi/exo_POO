@@ -1,11 +1,21 @@
 ﻿using ConsoleApp1.Models;
 
-Compte compte = new Courant();
-compte.Numero="BE69 1430 8207 1274";
-compte.Depot(38);
-Banque banque = new Banque();
+Console.WriteLine("Hello, World!");
+ 
+Courant compte = new Courant();
+Epargne epargne = new Epargne();
+User personne = new User();
 
-banque.AddAccount(compte);
-banque.ShowAccount();
-banque.DeleteAccount(compte);
-banque.ShowAccount();
+compte.Numero = "BE69 1430 7284 1452";
+personne.Name= "Aiesi";
+personne.Prenom = "Mirko";
+compte.Depot(50);
+epargne.Depot(500);
+
+
+compte.Titulaire = personne ;
+
+Console.WriteLine($"{personne.Name}, tu possèdes {compte.Solde} sur ton compte courrant {compte.Numero} et sur l'épargne {epargne.Solde}");
+compte.AppliquerInteret();
+epargne.AppliquerInteret();
+Console.WriteLine($"Solde sur le compte courrant apres les interet {compte.Solde} sur l'épargne {epargne.Solde}");

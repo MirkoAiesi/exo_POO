@@ -1,9 +1,13 @@
-﻿namespace ConsoleApp1.Models;
+﻿using ConsoleApp1.Interfaces;
 
-public abstract class Compte
+namespace ConsoleApp1.Models;
+
+public abstract class Compte : IBanker //abstract ne peut pas etre instancié, on ne peut pas créer d'objet compte utiliser a des fin d'héritage
 {
     public string? Numero { get; set; }
     public double Solde { get; protected set; }
+    public double Interet { get; protected set; }
+    public double ResultInteret { get; set; }
     public User? Titulaire { get; set; }
 
     public virtual bool Retrait(double montant)
@@ -36,5 +40,12 @@ public abstract class Compte
             return true;
         }
         
+    }
+
+    protected abstract double CalculInteret();
+
+    public void AppliquerInteret()
+    {
+        Solde = Solde + CalculInteret();
     }
 }

@@ -39,5 +39,20 @@ public class Courant : Compte
         Solde -= montant;
         return true;
     }
-    
+
+    protected override double CalculInteret()
+    {
+        if (Solde > 0)
+        {
+            Interet = 3;
+            ResultInteret = (Solde/100) * Interet;
+            return ResultInteret;
+        }
+        else
+        {
+            Interet = 9.75;
+            ResultInteret = (Solde/100) * Interet;
+            return ResultInteret;
+        }
+    }
 }
