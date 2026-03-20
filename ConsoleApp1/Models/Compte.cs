@@ -8,6 +8,18 @@ public abstract class Compte //abstract ne peut pas etre instancié, on ne peut 
     public double ResultInteret { get; set; }
     public User? Titulaire { get; set; }
 
+    public Compte(string numero, User titulaire)
+    {
+        Numero = numero;
+        Titulaire = titulaire;
+    }
+    public Compte(string numero, User titulaire, double solde)
+    {
+        Numero = numero;
+        Titulaire = titulaire;
+        Solde = solde;
+    }
+
     public virtual bool Retrait(double montant)
     
     {
