@@ -2,8 +2,13 @@
 
 public class Banque
 {
-    public string Nom { get; set; }
+    public string Nom { get; init; }
     private Dictionary<string, Compte> account = new Dictionary<string, Compte>();
+
+    public Banque(string nom)
+    {
+        Nom = nom;
+    }
 
     public void AddAccount(Compte nouveauCompte)
     {

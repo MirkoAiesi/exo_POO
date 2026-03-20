@@ -2,7 +2,17 @@
 
 public class Epargne : Compte
 {
-    public DateTime DateDernierRetrait { get; set; }
+    public Epargne(string numero, User titulaire, DateTime dateDernierRetrait) : base(numero, titulaire)
+    {
+        DateDernierRetrait = dateDernierRetrait;
+    }
+
+    public Epargne(string numero, User titulaire, double solde, DateTime dateDernierRetrait) : base(numero, titulaire, solde)
+    {
+        DateDernierRetrait = dateDernierRetrait;
+    }
+
+    public DateTime DateDernierRetrait { get; private set; }
     
     public override bool Retrait(double montant)
     {

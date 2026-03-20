@@ -2,11 +2,11 @@
 
 public abstract class Compte //abstract ne peut pas etre instancié, on ne peut pas créer d'objet compte
 {
-    public string? Numero { get; set; }
+    public string? Numero { get; private set; }
     public double Solde { get; protected set; }
     public double Interet { get; protected set; }
     public double ResultInteret { get; set; }
-    public User? Titulaire { get; set; }
+    public User? Titulaire { get; private set; }
 
     public Compte(string numero, User titulaire)
     {

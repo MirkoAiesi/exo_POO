@@ -3,6 +3,17 @@
 public class Courant : Compte
 {
     private double _ligneDeCredit;
+
+    public Courant(string numero, User titulaire, double ligneDeCredit) : base(numero, titulaire)
+    {
+        _ligneDeCredit = ligneDeCredit;
+    }
+
+    public Courant(string numero, User titulaire, double solde, double ligneDeCredit) : base(numero, titulaire, solde)
+    {
+        _ligneDeCredit = ligneDeCredit;
+    }
+
     public double LigneDeCredit
     {
         get
@@ -16,13 +27,7 @@ public class Courant : Compte
         } 
             
     }
-
-    public double LigneDeCredit2
-    {
-        get => field;
-        set => field = value >= 0 ? value: field;
-    }
-
+    
     public override bool Retrait(double montant)
     {
         if (montant <= 0)
