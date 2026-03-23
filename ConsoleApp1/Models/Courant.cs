@@ -8,6 +8,10 @@ public class Courant : Compte
 
     public Courant(string numero, User titulaire, double ligneDeCredit) : base(numero, titulaire)
     {
+        if (ligneDeCredit <= 0)
+        {
+            throw new InvalidOperationException();
+        }
         _ligneDeCredit = ligneDeCredit;
     }
 
@@ -39,7 +43,7 @@ public class Courant : Compte
         if (Solde - montant > Solde + LigneDeCredit)
         {
             Console.WriteLine("Pas assez d'argent pour retirer ce montant");
-            return ;
+            throw new SoldeInsuffisantException($"Pas assez d'argent pour retirer ce montant !");
         }
 
         Solde -= montant;

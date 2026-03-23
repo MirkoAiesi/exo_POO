@@ -32,8 +32,7 @@ public abstract class Compte : IBanker //abstract ne peut pas etre instancié, o
         }
         if (Solde - montant > Solde)
         {
-            Console.WriteLine("Pas assez d'argent pour retirer ce montant");
-            return;
+            throw new SoldeInsuffisantException($"Pas assez d'argent pour retirer ce montant !");
         }
 
         Solde -= montant;
