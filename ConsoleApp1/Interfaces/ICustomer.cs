@@ -17,6 +17,6 @@
 public interface ICustomer
 {
     double Solde { get; }
-    bool Retrait(double montant);
-    bool Depot(double montant);
+    void Retrait(double montant);
+    void Depot(double montant);
 }

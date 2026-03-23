@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp1.Models;
+﻿using ConsoleApp1.Exception;
+
+namespace ConsoleApp1.Models;
 
 public class Courant : Compte
 {
@@ -6,6 +8,10 @@ public class Courant : Compte
 
     public Courant(string numero, User titulaire, double ligneDeCredit) : base(numero, titulaire)
     {
+        if (ligneDeCredit <= 0)
+        {
+            throw new InvalidOperationException();
+        }
         _ligneDeCredit = ligneDeCredit;
     }
 
@@ -28,21 +34,19 @@ public class Courant : Compte
             
     }
     
-    public override bool Retrait(double montant)
+    public override void Retrait(double montant)
     {
         if (montant <= 0)
         {
-            Console.WriteLine("le montant doit etre supérieur à 0 ");
-            return false;
+            throw new SoldeInsuffisantException($"le montant du retrait doit etre supérieur à 0 !!");
         }
         if (Solde - montant > Solde + LigneDeCredit)
         {
             Console.WriteLine("Pas assez d'argent pour retirer ce montant");
-            return false;
+            throw new SoldeInsuffisantException($"Pas assez d'argent pour retirer ce montant !");
         }
 
         Solde -= montant;
-        return true;
     }
 
     protected override double CalculInteret()
