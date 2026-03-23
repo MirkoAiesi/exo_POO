@@ -1,4 +1,5 @@
-﻿using ConsoleApp1.Interfaces;
+﻿using ConsoleApp1.Exception;
+using ConsoleApp1.Interfaces;
 
 namespace ConsoleApp1.Models;
 
@@ -22,34 +23,32 @@ public abstract class Compte : IBanker //abstract ne peut pas etre instancié, o
         Solde = solde;
     }
 
-    public virtual bool Retrait(double montant)
+    public virtual void Retrait(double montant)
     
     {
         if (montant <= 0)
         {
-            Console.WriteLine($"le montant doit etre supérieur à 0 ");
-            return false;
+            throw new SoldeInsuffisantException($"le montant du retrait doit etre supérieur à 0 !!");
         }
         if (Solde - montant > Solde)
         {
             Console.WriteLine("Pas assez d'argent pour retirer ce montant");
-            return false;
+            return;
         }
 
         Solde -= montant;
-        return true;
+
     }
-    public virtual bool Depot(double montant)
+    public virtual void Depot(double montant)
     {
         if (montant <= 0)
         {
             Console.WriteLine($"le montant doit etre supérieur à 0 ");
-            return false;
+            throw new ArgumentOutOfRangeException();
         }
         else
         {
             Solde += montant;
-            return true;
         }
         
     }

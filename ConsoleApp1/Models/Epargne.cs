@@ -14,15 +14,17 @@ public class Epargne : Compte
 
     public DateTime DateDernierRetrait { get; private set; }
     
-    public override bool Retrait(double montant)
+    public override void Retrait(double montant)
     {
-        if (base.Retrait(montant))
+        double ancienSolde = Solde;
+
+        base.Retrait(montant);
+
+        if (Solde != ancienSolde)
         {
             DateDernierRetrait = DateTime.Now;
-            return true;
         }
-
-        return false;
+        
     }
 
     protected override double CalculInteret()
